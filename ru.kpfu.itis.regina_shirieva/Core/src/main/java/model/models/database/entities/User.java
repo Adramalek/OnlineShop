@@ -1,4 +1,4 @@
-package models;
+package model.models.database.entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,11 +16,11 @@ public class User extends AEntity {
     private String name;
     private String surname;
     private String nickName;
-    private List<Product> card;
+    private List<ProductPack> card;
 
     public User() {}
 
-    @Column
+    @Column(name = "is_admin", nullable = false)
     public Boolean getAdmin() {
         return isAdmin;
     }
@@ -29,7 +29,7 @@ public class User extends AEntity {
         isAdmin = admin;
     }
 
-    @Column
+    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -38,7 +38,7 @@ public class User extends AEntity {
         this.email = email;
     }
 
-    @Column
+    @Column(name = "hash_password", nullable = false)
     public String getHashPassword() {
         return hashPassword;
     }
@@ -47,7 +47,7 @@ public class User extends AEntity {
         this.hashPassword = hashPassword;
     }
 
-    @Column
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -56,7 +56,7 @@ public class User extends AEntity {
         this.name = name;
     }
 
-    @Column
+    @Column(name = "surname", nullable = false)
     public String getSurname() {
         return surname;
     }
@@ -65,7 +65,7 @@ public class User extends AEntity {
         this.surname = surname;
     }
 
-    @Column
+    @Column(name = "nickname", nullable = false)
     public String getNickName() {
         return nickName;
     }
@@ -74,12 +74,12 @@ public class User extends AEntity {
         this.nickName = nickName;
     }
 
-    @ManyToMany(mappedBy = "buyers", fetch = FetchType.LAZY)
-    public List<Product> getCard() {
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    public List<ProductPack> getCard() {
         return card;
     }
 
-    public void setCard(List<Product> card) {
+    public void setCard(List<ProductPack> card) {
         this.card = card;
     }
 }

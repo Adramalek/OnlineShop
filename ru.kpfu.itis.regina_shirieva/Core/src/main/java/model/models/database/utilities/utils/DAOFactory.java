@@ -1,10 +1,13 @@
-package utilities.utils;
+package model.models.database.utilities.utils;
 
-import models.AEntity;
-import utilities.dao.implementations.ABaseDAO;
-import utilities.dao.implementations.CharacteristicsDAO;
-import utilities.dao.implementations.ProductDAO;
-import utilities.dao.implementations.UserDAO;
+import model.models.database.entities.AEntity;
+import model.models.database.entities.Characteristic;
+import model.models.database.entities.Product;
+import model.models.database.entities.User;
+import model.models.database.utilities.dao.implementations.CharacteristicsDAO;
+import model.models.database.utilities.dao.implementations.ProductDAO;
+import model.models.database.utilities.dao.implementations.UserDAO;
+import model.models.database.utilities.dao.implementations.ABaseDAO;
 import models.*;
 
 import java.io.Serializable;
@@ -21,9 +24,9 @@ public class DAOFactory {
     }
     
     private DAOFactory (){
-        daoEntities.put(Characteristic.class,CharacteristicsDAO.getInstance());
-        daoEntities.put(Product.class,ProductDAO.getInstance());
-        daoEntities.put(User.class,UserDAO.getInstance());
+        daoEntities.put(Characteristic.class, CharacteristicsDAO.getInstance());
+        daoEntities.put(Product.class, ProductDAO.getInstance());
+        daoEntities.put(User.class, UserDAO.getInstance());
     }
     
     public static DAOFactory getInstance(){

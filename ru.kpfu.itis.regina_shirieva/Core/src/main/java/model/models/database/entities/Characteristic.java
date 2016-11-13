@@ -1,7 +1,8 @@
-package models;
+package model.models.database.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Access(value = AccessType.PROPERTY)
@@ -14,7 +15,7 @@ public class Characteristic extends AEntity {
 
     protected Characteristic(){}
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -30,5 +31,18 @@ public class Characteristic extends AEntity {
 
     public void setValue(List<CharacteristicValue> value) {
         this.value = value;
+    }
+
+    @Override
+    public int hashCode() {
+        return 2*Objects.hash(getName());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Characteristic)) return false;
+        if (this == obj) return true;
+        Characteristic another = (Characteristic) obj;
+        return getName().equals(another.getName());
     }
 }

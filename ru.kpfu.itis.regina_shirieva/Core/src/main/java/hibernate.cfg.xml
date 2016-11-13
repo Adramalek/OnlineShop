@@ -15,9 +15,10 @@
         <property name="hibernate.connection.autocommit">false</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="models.Characteristic"/>
-        <mapping class="models.CharacteristicValue"/>
-        <mapping class="models.Product"/>
-        <mapping class="models.User"/>
+        <mapping class="model.models.database.entities.Characteristic"/>
+        <mapping class="model.models.database.entities.CharacteristicValue"/>
+        <mapping class="model.models.database.entities.Product"/>
+        <mapping class="model.models.database.entities.User"/>
+        <mapping class="model.models.database.entities.ProductPack"/>
     </session-factory>
 </hibernate-configuration>

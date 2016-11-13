@@ -1,7 +1,7 @@
-package utilities.dao.interfaces;
+package model.models.database.utilities.dao.interfaces;
 
 import com.sun.istack.internal.NotNull;
-import models.AEntity;
+import model.models.database.entities.AEntity;
 
 import java.io.Serializable;
 import java.util.Collection;

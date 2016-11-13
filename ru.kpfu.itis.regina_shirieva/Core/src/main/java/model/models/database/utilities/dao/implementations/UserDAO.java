@@ -1,10 +1,10 @@
-package utilities.dao.implementations;
+package model.models.database.utilities.dao.implementations;
 
 import com.sun.istack.internal.NotNull;
-import models.User;
+import model.models.database.entities.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
-import utilities.dao.interfaces.IUserDAO;
+import model.models.database.utilities.dao.interfaces.IUserDAO;
 
 import java.util.ArrayList;
 import java.util.Collection;

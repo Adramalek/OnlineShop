@@ -1,7 +1,7 @@
-package utilities.dao.interfaces;
+package model.models.database.utilities.dao.interfaces;
 
 import com.sun.istack.internal.NotNull;
-import models.User;
+import model.models.database.entities.User;
 
 public interface IUserDAO extends IBaseDAO<User, Long> {
     User find(@NotNull String nickName);

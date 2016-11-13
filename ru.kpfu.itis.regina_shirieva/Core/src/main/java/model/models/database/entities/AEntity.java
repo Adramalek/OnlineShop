@@ -1,4 +1,4 @@
-package models;
+package model.models.database.entities;
 
 import javax.persistence.*;
 
@@ -10,7 +10,6 @@ public abstract class AEntity {
     AEntity(){}
 
     @Id
-    @Basic
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;

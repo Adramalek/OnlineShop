@@ -1,4 +1,4 @@
-package models;
+package model.models.database.entities;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ public class CharacteristicValue extends AEntity {
 
     public CharacteristicValue() {}
 
-    @Column(name = "value")
+    @Column(name = "value", nullable = false)
     public String getValue() {
         return value;
     }
@@ -21,7 +21,7 @@ public class CharacteristicValue extends AEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "characteristic_id", referencedColumnName = "id")
+    @JoinColumn(name = "characteristic_id", referencedColumnName = "id", nullable = false)
     public Characteristic getCharacteristic() {
         return characteristic;
     }

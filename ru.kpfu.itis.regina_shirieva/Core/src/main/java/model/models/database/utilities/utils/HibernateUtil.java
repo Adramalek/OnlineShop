@@ -1,4 +1,4 @@
-package utilities.utils;
+package model.models.database.utilities.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

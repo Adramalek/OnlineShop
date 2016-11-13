@@ -1,10 +1,10 @@
-package utilities.dao.implementations;
+package model.models.database.utilities.dao.implementations;
 
 import com.sun.istack.internal.NotNull;
-import models.Product;
+import model.models.database.entities.Product;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
-import utilities.dao.interfaces.IProductDAO;
+import model.models.database.utilities.dao.interfaces.IProductDAO;
 
 import java.math.BigDecimal;
 import java.sql.Date;

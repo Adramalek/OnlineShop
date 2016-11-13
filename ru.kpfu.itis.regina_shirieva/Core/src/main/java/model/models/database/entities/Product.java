@@ -1,10 +1,10 @@
-package models;
+package model.models.database.entities;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 @Entity
 @Access(value = AccessType.PROPERTY)
@@ -17,12 +17,13 @@ public class Product extends AEntity {
     private BigDecimal price;
     private String imageURL;
     private Date appearanceDate;
-    private List<User> buyers;
+    private Integer quantity;
     private List<CharacteristicValue> characteristics;
+    private List<ProductPack> packs;
 
     public Product() {}
 
-    @Column
+    @Column(name = "info")
     public String getInfo() {
         return info;
     }
@@ -31,7 +32,7 @@ public class Product extends AEntity {
         this.info = info;
     }
 
-    @Column
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -40,7 +41,7 @@ public class Product extends AEntity {
         this.name = name;
     }
 
-    @Column
+    @Column(name = "price", nullable = false)
     public BigDecimal getPrice() {
         return price;
     }
@@ -49,7 +50,7 @@ public class Product extends AEntity {
         this.price = price;
     }
 
-    @Column
+    @Column(name = "image_url", nullable = false)
     public String getImageURL() {
         return imageURL;
     }
@@ -58,7 +59,7 @@ public class Product extends AEntity {
         this.imageURL = imageURL;
     }
 
-    @Column
+    @Column(name = "appearance_date", nullable = false)
     public Date getAppearanceDate() {
         return appearanceDate;
     }
@@ -69,23 +70,9 @@ public class Product extends AEntity {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "Card",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
-    )
-    public List<User> getBuyers() {
-        return buyers;
-    }
-
-    public void setBuyers(List<User> buyers) {
-        this.buyers = buyers;
-    }
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
             name = "Product_Characteristics",
-            joinColumns = @JoinColumn(name = "characteristic_value_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "characteristic_value_id", referencedColumnName = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     )
     public List<CharacteristicValue> getCharacteristics() {
         return characteristics;
@@ -93,5 +80,36 @@ public class Product extends AEntity {
 
     public void setCharacteristics(List<CharacteristicValue> characteristics) {
         this.characteristics = characteristics;
+    }
+
+    @Column(name = "quantity", nullable = false)
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    @OneToMany(mappedBy = "product")
+    public List<ProductPack> getPacks() {
+        return packs;
+    }
+
+    public void setPacks(List<ProductPack> packs) {
+        this.packs = packs;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return Objects.equals(getName(), product.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return 3*Objects.hash(getName());
     }
 }

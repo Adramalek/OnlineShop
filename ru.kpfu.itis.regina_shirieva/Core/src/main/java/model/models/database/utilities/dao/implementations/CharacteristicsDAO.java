@@ -1,10 +1,10 @@
-package utilities.dao.implementations;
+package model.models.database.utilities.dao.implementations;
 
 import com.sun.istack.internal.NotNull;
-import models.Characteristic;
+import model.models.database.entities.Characteristic;
+import model.models.database.utilities.dao.interfaces.ICharacteristicDAO;
 import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
-import utilities.dao.interfaces.ICharacteristicDAO;
 
 import java.util.ArrayList;
 import java.util.Collection;

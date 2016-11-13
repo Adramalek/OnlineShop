@@ -1,13 +1,13 @@
-package utilities.dao.implementations;
+package model.models.database.utilities.dao.implementations;
 
 import com.sun.istack.internal.NotNull;
+import model.models.database.utilities.dao.interfaces.IBaseDAO;
+import model.models.database.utilities.utils.HibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import utilities.dao.interfaces.IBaseDAO;
-import models.AEntity;
-import utilities.utils.HibernateUtil;
+import model.models.database.entities.AEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
